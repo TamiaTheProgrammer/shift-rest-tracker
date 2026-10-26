@@ -1,3 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shift-rest-tracker"
+version = "0.1.0"
+description = "Tracks rest time between rotating work shifts and flags short turnarounds."
+requires-python = ">=3.10"
+dependencies = ["matplotlib>=3.8"]
+
+[project.scripts]
+shift-tracker = "shift_tracker.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]

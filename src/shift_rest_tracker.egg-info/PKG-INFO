@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: shift-rest-tracker
+Version: 0.1.0
+Summary: Tracks rest time between rotating work shifts and flags short turnarounds.
+Requires-Python: >=3.10
+Requires-Dist: matplotlib>=3.8

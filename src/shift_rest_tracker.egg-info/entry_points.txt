@@ -1,0 +1,2 @@
+[console_scripts]
+shift-tracker = shift_tracker.cli:main
