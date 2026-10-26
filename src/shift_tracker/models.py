@@ -18,5 +18,5 @@ class Shift:
     @property
     def duration(self) -> timedelta:
         """How long the shift lasted."""
-        # TODO: return the time between start and end
-        raise NotImplementedError
+        # Subtracting two datetimes gives a timedelta (an amount of time).
+        return self.end - self.start

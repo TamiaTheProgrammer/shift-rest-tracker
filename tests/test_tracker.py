@@ -4,6 +4,8 @@
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
+import pytest
+
 from shift_tracker.analysis import rest_gaps, short_turnarounds, weekly_hours
 from shift_tracker.loader import load_shifts
 from shift_tracker.models import Shift
@@ -36,6 +38,13 @@ def test_overnight_shift_ends_next_day():
 def test_shifts_are_sorted():
     shifts = load_shifts(SAMPLE)
     assert shifts == sorted(shifts, key=lambda s: s.start)
+
+
+def test_same_start_and_end_is_rejected(tmp_path):
+    bad = tmp_path / "bad.csv"
+    bad.write_text("date,start,end,notes\n2026-10-05,06:00,06:00,\n")
+    with pytest.raises(ValueError, match="Line 2"):
+        load_shifts(bad)
 
 
 # ---------- Step 3: analysis ----------
